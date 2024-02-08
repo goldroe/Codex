@@ -30,7 +30,7 @@ typedef double f64;
 #define WIDTH 1200
 #define HEIGHT 900
 
-#define FONT_NAME "fonts/consolas.ttf"
+#define FONT_NAME "data/fonts/consolas.ttf"
 #define FONT_HEIGHT 18
 
 template <typename V, typename L, typename H> V clamp(const V &value, const L &min, const H &max) {
