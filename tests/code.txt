@@ -1,0 +1,90 @@
+// Foo buzz bizz
+// this is a test string
+// Advent of Code 2022
+// Day 8
+// Treetop Tree House
+// Count how many trees are visible from outside the grid
+
+#include <stdbool.h>
+#include <stdio.h>
+
+int main(int argc, char **argv) {
+    
+    char *map =
+        "30373\n"
+        "25512\n"
+        "65332\n"
+        "33549\n"
+        "35390";
+
+    int rows = 1, cols = 0;
+    for (char *ptr = map; *ptr != '\n'; ptr++) {
+        cols++;
+    }
+    for (char *ptr = map; *ptr; ptr++) {
+        if (*ptr == '\n') rows++;
+    }
+
+    int count = 0;
+    int x = 0, y = 0;
+    for (char *ptr = map; *ptr; ptr++) {
+        if (*ptr == '\n') {
+            x = 0;
+            y++;
+            continue;
+        }
+        int tree = *ptr - '0';
+        printf("checking '%d' at (%d,%d)..\n", tree, x, y);
+
+        bool north = true, south = true, west = true, east = true;
+        //north
+        for (int row = 0; row < y; row++) {
+            char *s = map + row * (cols + 1) + x;
+            int h = *s - '0';
+            if (h >= tree) {
+                printf("NORTH");
+                north = false;
+                break;
+            }
+        }
+        //south
+        for (int row = y + 1; row < rows; row++) {
+            char *s = map + row * (cols + 1) + x;
+            int h = *s - '0';
+            if (h >= tree) {
+                printf("SOUTH");
+                south = false;
+                break;
+            }
+        }
+        // west
+        for (int col = 0; col < x; col++) {
+            char *s = map + y * (cols + 1) + col;
+            int h = *s - '0';
+            if (h >= tree) {
+                printf("WEST");
+                west = false;
+                break;
+            }
+        }
+        // east
+        for (int col = x + 1; col < cols; col++) {
+            char *s = map + y * (cols + 1) + col;
+            int h = *s - '0';
+            if (h >= tree) {
+                printf("EAST");
+                east = false;
+                break;
+            }
+        }
+
+        printf("\n");
+
+        if (east || west || north || south) count++;
+        x++;
+    }
+
+    printf("number of trees visible: %d\n", count);
+
+    return 0;
+}

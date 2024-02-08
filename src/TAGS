@@ -1,0 +1,525 @@
+
+c:/Dev/Codex/src\array.cpp,1188
+class Array {Array5,72
+    T *data = nullptr;data7,96
+    T *data = nullptr;Array::data7,96
+    size_t count = 0;count8,120
+    size_t count = 0;Array::count8,120
+    size_t capacity = 0;capacity9,143
+    size_t capacity = 0;Array::capacity9,143
+    Array() {Array13,213
+    Array() {Array::Array13,213
+    Array(std::initializer_list<T> list) {Array19,305
+    Array(std::initializer_list<T> list) {Array::Array19,305
+    void grow(size_t num_elements) {grow26,492
+    void grow(size_t num_elements) {Array::grow26,492
+    void push(T element) {push35,762
+    void push(T element) {Array::push35,762
+    T operator[](size_t index) {operator []43,919
+    T operator[](size_t index) {Array::operator []43,919
+    bool empty() { return count == 0; }empty48,1023
+    bool empty() { return count == 0; }Array::empty48,1023
+    void clear() {clear50,1066
+    void clear() {Array::clear50,1066
+    T* begin(){begin58,1208
+    T* begin(){Array::begin58,1208
+    T* end() {end61,1254
+    T* end() {Array::end61,1254
+void Array<T>::reserve(size_t num_elements) {reserve75,1556
+void Array<T>::reserve(size_t num_elements) {Array::reserve75,1556
+
+c:/Dev/Codex/src\codex.cpp,7557
+#define GAP_SIZE GAP_SIZE4,41
+Color theme_background = rgb_to_color(0xFFFFFF);theme_background6,64
+Color theme_foreground = rgb_to_color(0);theme_foreground7,113
+Color theme_cursor = rgb_to_color(0);theme_cursor8,155
+Color theme_select = rgb_to_color(0xC0C0C0);theme_select9,193
+Color theme_line = rgb_to_color(FFFFCD);theme_line10,238
+Color theme_commandbuf_fg = rgb_to_color(0);theme_commandbuf_fg12,280
+Color theme_commandbuf_bg = rgb_to_color(0xE1FAFF);theme_commandbuf_bg13,325
+global LARGE_INTEGER performance_frequency;performance_frequency15,378
+global bool window_should_close;window_should_close16,422
+global Application *application;application18,456
+global Keymap normal_keymap;normal_keymap20,490
+global Keymap insert_keymap;insert_keymap21,519
+global Keymap select_keymap;select_keymap22,548
+global Keymap goto_keymap;goto_keymap23,577
+global Keymap command_keymap;command_keymap24,604
+global char last_insert_char;last_insert_char26,635
+global Array<InputEvent> input_events;input_events27,665
+global RenderTarget render_target;render_target29,705
+internal string string_make(char *str, int count) {string_make33,798
+internal string string_make(char *str) {string_make40,920
+internal Array<string> split(string s) {split47,1044
+internal string join(string first, string second) {join64,1555
+internal void free_string(string *s) {free_string76,1927
+internal void free_builder(StringBuilder *b) {free_builder84,2058
+internal void string_emplace_realloc(StringBuilder *builder, string str) {string_emplace_realloc93,2218
+internal void string_emplace_capacity(StringBuilder *builder, string str) {string_emplace_capacity116,2986
+internal void string_emplace(StringBuilder *builder, string str) {string_emplace123,3250
+internal void append(StringBuilder *builder, string s) {append132,3524
+internal string copy(string str) {copy136,3616
+internal void reserve(string *s, int count) {reserve144,3821
+inline internal bool is_whitespace(u8 ch) {is_whitespace150,3956
+internal bool unix_path_is_abs(string path) {unix_path_is_abs154,4067
+internal Color rgb_to_color(u32 rgb) {rgb_to_color162,4244
+inline internal s64 buffer_gap_delta(Buffer *buffer) {buffer_gap_delta170,4476
+inline internal s64 buffer_length(Buffer *buffer) {buffer_length175,4619
+inline internal s64 raw_buffer_pos(Buffer *buffer, s64 pos) {raw_buffer_pos180,4756
+inline internal u8 char_from_pos(Buffer *buffer, s64 pos) {char_from_pos188,4954
+inline internal u8 *string_from_pos(Buffer *buffer, s64 pos) {string_from_pos196,5172
+internal Cursor get_cursor_from_pos(Buffer *buffer, s64 pos) {get_cursor_from_pos203,5392
+internal Cursor get_cursor_from_line(Buffer *buffer, s32 line) {get_cursor_from_line216,5697
+internal u8 view_char(View *view) {view_char225,5957
+internal string get_line_string(Buffer *buffer, s32 line) {get_line_string229,6054
+internal f32 get_string_width(string s, FontAtlas *atlas) {get_string_width240,6411
+internal void write_file(string file_name, string file_data) {write_file250,6659
+internal string read_file(string file_name) {read_file268,7375
+internal string lf_to_crlf(string str) {lf_to_crlf296,8563
+internal string crlf_to_lf(string str) {crlf_to_lf320,9082
+internal void update_line_bases(Buffer *buffer) {update_line_bases341,9569
+internal void buffer_clear(Buffer *buffer) {buffer_clear353,9929
+internal string buffer_text(Buffer *buffer) {buffer_text359,10088
+internal void buffer_gap_grow(Buffer *buffer) {buffer_gap_grow373,10516
+internal void gap_shift(Buffer *buffer, s64 new_gap) {gap_shift392,11142
+internal void buffer_ensure_gap(Buffer *buffer) {buffer_ensure_gap418,12357
+internal int get_line_count(Buffer *buffer) {get_line_count424,12490
+internal void insert_char(Buffer *buffer, s64 position, u8 c) {insert_char434,12775
+internal string copy_range(Buffer *buffer, s64 start, s64 end) {copy_range447,13070
+internal void delete_range(Buffer *buffer, s64 start, s64 end) {delete_range460,13493
+internal void delete_single(Buffer *buffer, s64 pos) {delete_single474,13864
+internal s32 get_line_length(Buffer *buffer, s64 line) {get_line_length478,13962
+internal s64 get_line_pos(Buffer *buffer, s64 line) {get_line_pos484,14163
+internal s64 get_line_end_pos(Buffer *buffer, s64 line) {get_line_end_pos490,14349
+COMMAND_SIG(undefined) {COMMAND_SIG496,14527
+COMMAND_SIG(quit_codex) {COMMAND_SIG499,14555
+COMMAND_SIG(normal_mode) {COMMAND_SIG504,14642
+COMMAND_SIG(insert_mode) {COMMAND_SIG510,14775
+COMMAND_SIG(select_mode) {COMMAND_SIG516,14908
+COMMAND_SIG(command_mode) {COMMAND_SIG523,15080
+COMMAND_SIG(write_buffer);write_buffer530,15311
+COMMAND_SIG(extend_line) {COMMAND_SIG533,15340
+COMMAND_SIG(extend_line_below) {COMMAND_SIG542,15676
+COMMAND_SIG(exchange_selection_mark) {COMMAND_SIG554,16084
+COMMAND_SIG(open) {COMMAND_SIG563,16332
+COMMAND_SIG(write_buffer) {COMMAND_SIG587,16969
+COMMAND_SIG(self_insert) {COMMAND_SIG623,17855
+COMMAND_SIG(goto_file_start) {COMMAND_SIG629,18063
+COMMAND_SIG(goto_file_end) {COMMAND_SIG635,18189
+COMMAND_SIG(goto_line_end) {COMMAND_SIG641,18405
+COMMAND_SIG(goto_line_start) {COMMAND_SIG646,18577
+COMMAND_SIG(insert_newline) {COMMAND_SIG651,18747
+COMMAND_SIG(insert_tab) {COMMAND_SIG657,18948
+COMMAND_SIG(insert_at_line_start) {COMMAND_SIG665,19186
+COMMAND_SIG(insert_at_line_end) {COMMAND_SIG689,19976
+COMMAND_SIG(open_line_above) {COMMAND_SIG696,20194
+int get_line_indentation(Buffer *buffer, int line) {get_line_indentation705,20492
+COMMAND_SIG(open_line) {COMMAND_SIG719,20808
+COMMAND_SIG(delete_char_backward) {COMMAND_SIG731,21280
+COMMAND_SIG(move_char_left) {COMMAND_SIG739,21530
+COMMAND_SIG(move_char_right) {COMMAND_SIG750,21832
+COMMAND_SIG(move_next_word_end) {COMMAND_SIG762,22248
+COMMAND_SIG(move_line_up) {COMMAND_SIG790,23057
+COMMAND_SIG(move_line_down) {COMMAND_SIG804,23590
+bool buffer_line_empty(Buffer *buffer, int line) {buffer_line_empty818,24180
+COMMAND_SIG(move_paragraph_up) {COMMAND_SIG831,24526
+COMMAND_SIG(move_paragraph_down) {COMMAND_SIG845,24963
+COMMAND_SIG(page_up) {COMMAND_SIG859,25410
+COMMAND_SIG(page_down) {COMMAND_SIG870,25665
+COMMAND_SIG(delete_selection) {COMMAND_SIG882,25996
+Array<StringMatch> buffer_search_forward(Buffer *buffer, string pattern, s64 pos) {buffer_search_forward903,26495
+COMMAND_SIG(search) {COMMAND_SIG924,27151
+global TypeableCommand typeable_commands[] = {typeable_commands939,27624
+COMMAND_SIG(exit_command_mode) {COMMAND_SIG946,27899
+internal bool execute_command(Keymap *keymap, Array<InputEvent> &events) {execute_command971,28597
+internal bool win32_get_window_size(HWND window, int *w, int *h) {win32_get_window_size985,29016
+internal void resize_application(RenderTarget *target, int w, int h) {resize_application995,29250
+inline internal TextBuffer *text_buffer_init(string contents) {text_buffer_init1008,29709
+inline internal TextBuffer *text_buffer_init() {text_buffer_init1018,30021
+internal void push_buffer(Application *app, Buffer *buffer) {push_buffer1027,30309
+inline internal Buffer *buffer_init() {buffer_init1042,30652
+inline internal Buffer *buffer_init(string file_name, string contents) {buffer_init1051,30917
+internal void push_view(Application *app, View *view) {push_view1067,31492
+internal View *view_init() {view_init1082,31805
+internal Application *application_init() {application_init1090,32006
+internal string parse_arguments(int argc, char **argv) {parse_arguments1096,32177
+
+c:/Dev/Codex/src\codex.h,9408
+#define CODEX_HCODEX_H2,17
+#define ARRAYCOUNT(ARRAYCOUNT4,36
+#define CONSTZ(CONSTZ5,102
+#define STRZ(STRZ6,147
+struct StringMatch {StringMatch8,194
+    s64 pos;pos9,216
+    s64 pos;StringMatch::pos9,216
+    s64 count;count10,230
+    s64 count;StringMatch::count10,230
+struct InputEvent {InputEvent13,252
+    u32 key;key14,273
+    u32 key;InputEvent::key14,273
+struct Vector2 {Vector217,293
+    f32 x;x18,311
+    f32 x;Vector2::x18,311
+    f32 y;y19,323
+    f32 y;Vector2::y19,323
+    Vector2() {Vector221,337
+    Vector2() {Vector2::Vector221,337
+    Vector2(f32 x, f32 y) {Vector226,401
+    Vector2(f32 x, f32 y) {Vector2::Vector226,401
+struct Vertex {Vertex32,487
+    f32 x, y;x33,504
+    f32 x, y;Vertex::x33,504
+    f32 x, y;y33,504
+    f32 x, y;Vertex::y33,504
+    f32 u, v;u34,519
+    f32 u, v;Vertex::u34,519
+    f32 u, v;v34,519
+    f32 u, v;Vertex::v34,519
+    f32 r, g, b;r35,534
+    f32 r, g, b;Vertex::r35,534
+    f32 r, g, b;g35,534
+    f32 r, g, b;Vertex::g35,534
+    f32 r, g, b;b35,534
+    f32 r, g, b;Vertex::b35,534
+struct Color {Color38,558
+    f32 r, g, b;r39,574
+    f32 r, g, b;Color::r39,574
+    f32 r, g, b;g39,574
+    f32 r, g, b;Color::g39,574
+    f32 r, g, b;b39,574
+    f32 r, g, b;Color::b39,574
+struct Cursor {Cursor42,598
+    s64 pos;pos43,615
+    s64 pos;Cursor::pos43,615
+    s32 line;line44,629
+    s32 line;Cursor::line44,629
+    s32 col;col45,644
+    s32 col;Cursor::col45,644
+enum LineEnding {LineEnding48,664
+    CR,CR49,683
+    LF,LF50,692
+    CRLFCRLF51,701
+struct string {string54,717
+    char *data;data55,734
+    char *data;string::data55,734
+    int count;count56,751
+    int count;string::count56,751
+    char const &operator[](int i) {operator []57,767
+    char const &operator[](int i) {string::operator []57,767
+struct StringBuilder {StringBuilder62,842
+    char *data;data63,866
+    char *data;StringBuilder::data63,866
+    size_t count;count64,883
+    size_t count;StringBuilder::count64,883
+    size_t capacity;capacity65,902
+    size_t capacity;StringBuilder::capacity65,902
+struct FontGlyph {FontGlyph68,930
+    f32 ax;ax69,950
+    f32 ax;FontGlyph::ax69,950
+    f32 ay;ay70,963
+    f32 ay;FontGlyph::ay70,963
+    f32 bx;bx71,976
+    f32 bx;FontGlyph::bx71,976
+    f32 by;by72,989
+    f32 by;FontGlyph::by72,989
+    f32 bt;bt73,1002
+    f32 bt;FontGlyph::bt73,1002
+    f32 bl;bl74,1015
+    f32 bl;FontGlyph::bl74,1015
+    f32 to;to75,1028
+    f32 to;FontGlyph::to75,1028
+struct FontAtlas {FontAtlas78,1047
+    FontGlyph glyphs[128];glyphs79,1067
+    FontGlyph glyphs[128];FontAtlas::glyphs79,1067
+    GLuint id;id80,1095
+    GLuint id;FontAtlas::id80,1095
+    int width;width81,1111
+    int width;FontAtlas::width81,1111
+    int height;height82,1127
+    int height;FontAtlas::height82,1127
+    int max_bmp_height;max_bmp_height83,1144
+    int max_bmp_height;FontAtlas::max_bmp_height83,1144
+    float ascend;ascend84,1169
+    float ascend;FontAtlas::ascend84,1169
+    float descend;descend85,1188
+    float descend;FontAtlas::descend85,1188
+    int bbox_height;bbox_height86,1208
+    int bbox_height;FontAtlas::bbox_height86,1208
+    float glyph_width;glyph_width87,1230
+    float glyph_width;FontAtlas::glyph_width87,1230
+    float glyph_height;glyph_height88,1254
+    float glyph_height;FontAtlas::glyph_height88,1254
+struct Rect {Rect91,1285
+    f32 x0;x092,1300
+    f32 x0;Rect::x092,1300
+    f32 y0;y093,1313
+    f32 y0;Rect::y093,1313
+    f32 x1;x194,1326
+    f32 x1;Rect::x194,1326
+    f32 y1;y195,1339
+    f32 y1;Rect::y195,1339
+struct TextBuffer {TextBuffer98,1358
+    u8 *contents;contents99,1379
+    u8 *contents;TextBuffer::contents99,1379
+    s64 gap_start;gap_start100,1398
+    s64 gap_start;TextBuffer::gap_start100,1398
+    s64 gap_end;gap_end101,1418
+    s64 gap_end;TextBuffer::gap_end101,1418
+    s64 end;end102,1436
+    s64 end;TextBuffer::end102,1436
+    Array<s64> line_bases;line_bases103,1450
+    Array<s64> line_bases;TextBuffer::line_bases103,1450
+struct Buffer {Buffer106,1484
+    string file_name;file_name107,1501
+    string file_name;Buffer::file_name107,1501
+    TextBuffer *text;text108,1524
+    TextBuffer *text;Buffer::text108,1524
+    string default_directory;default_directory110,1549
+    string default_directory;Buffer::default_directory110,1549
+    LineEnding line_ending;line_ending111,1580
+    LineEnding line_ending;Buffer::line_ending111,1580
+    Buffer *next;next113,1611
+    Buffer *next;Buffer::next113,1611
+struct View {View117,1652
+    FontAtlas *atlas;atlas118,1667
+    FontAtlas *atlas;View::atlas118,1667
+    Rect rect;rect119,1690
+    Rect rect;View::rect119,1690
+    Buffer *buffer;buffer120,1706
+    Buffer *buffer;View::buffer120,1706
+    s32 lines;lines121,1727
+    s32 lines;View::lines121,1727
+    Cursor cursor;cursor122,1743
+    Cursor cursor;View::cursor122,1743
+    Keymap *keymap;keymap124,1765
+    Keymap *keymap;View::keymap124,1765
+    s32 line_offset;line_offset126,1788
+    s32 line_offset;View::line_offset126,1788
+    s32 col_offset;col_offset127,1810
+    s32 col_offset;View::col_offset127,1810
+    b32 select_active;select_active129,1833
+    b32 select_active;View::select_active129,1833
+    Cursor select_cursor;select_cursor130,1857
+    Cursor select_cursor;View::select_cursor130,1857
+    b32 is_commandbuf;is_commandbuf132,1886
+    b32 is_commandbuf;View::is_commandbuf132,1886
+    View *next;next134,1912
+    View *next;View::next134,1912
+struct RenderBatch {RenderBatch137,1935
+    u32 texture;texture138,1957
+    u32 texture;RenderBatch::texture138,1957
+    Array<Vertex> vertices;vertices139,1975
+    Array<Vertex> vertices;RenderBatch::vertices139,1975
+    RenderBatch *next;next140,2004
+    RenderBatch *next;RenderBatch::next140,2004
+struct RenderTarget {RenderTarget143,2034
+    s32 width;width144,2057
+    s32 width;RenderTarget::width144,2057
+    s32 height;height145,2073
+    s32 height;RenderTarget::height145,2073
+    u32 texture;texture146,2090
+    u32 texture;RenderTarget::texture146,2090
+    u32 fallback_texture;fallback_texture147,2108
+    u32 fallback_texture;RenderTarget::fallback_texture147,2108
+    RenderBatch *batches;batches148,2135
+    RenderBatch *batches;RenderTarget::batches148,2135
+    RenderBatch *current;current149,2162
+    RenderBatch *current;RenderTarget::current149,2162
+struct Application {Application152,2195
+    Buffer *buffer_list;buffer_list153,2217
+    Buffer *buffer_list;Application::buffer_list153,2217
+    View *view_list;view_list155,2245
+    View *view_list;Application::view_list155,2245
+    View *active_view;active_view156,2267
+    View *active_view;Application::active_view156,2267
+    View *command_view;command_view158,2293
+    View *command_view;Application::command_view158,2293
+    b32 command_mode;command_mode159,2318
+    b32 command_mode;Application::command_mode159,2318
+    Array<string> command_args;command_args160,2341
+    Array<string> command_args;Application::command_args160,2341
+typedef void (*CommandProc)(Application *);CommandProc163,2380
+#define COMMAND_SIG(COMMAND_SIG165,2427
+#define CTRL CTRL172,2638
+#define ALT ALT173,2661
+#define SHIFT SHIFT174,2683
+constexpr u16 max_key_count = (1 << (8 + 3));max_key_count175,2708
+struct TypeableCommand {TypeableCommand177,2757
+    string name;name178,2783
+    string name;TypeableCommand::name178,2783
+    Array<string> aliases;aliases179,2801
+    Array<string> aliases;TypeableCommand::aliases179,2801
+    CommandProc proc;proc180,2829
+    CommandProc proc;TypeableCommand::proc180,2829
+struct MappableCommand {MappableCommand183,2858
+    string name;name184,2884
+    string name;MappableCommand::name184,2884
+    CommandProc proc;proc185,2902
+    CommandProc proc;MappableCommand::proc185,2902
+struct KeyBind {KeyBind188,2931
+    enum { Command = 1, Map} kind;Command189,2949
+    enum { Command = 1, Map} kind;KeyBind::Command189,2949
+    enum { Command = 1, Map} kind;Map189,2949
+    enum { Command = 1, Map} kind;KeyBind::Map189,2949
+    enum { Command = 1, Map} kind;kind189,2949
+    enum { Command = 1, Map} kind;KeyBind::kind189,2949
+        MappableCommand command;command191,2998
+        MappableCommand command;KeyBind::__anon2::command191,2998
+        Keymap *map;map192,3032
+        Keymap *map;KeyBind::__anon2::map192,3032
+struct Keymap {Keymap196,3068
+    KeyBind bindings[max_key_count];bindings197,3085
+    KeyBind bindings[max_key_count];Keymap::bindings197,3085
+    inline void bind(u32 key, CommandProc command) {bind199,3125
+    inline void bind(u32 key, CommandProc command) {Keymap::bind199,3125
+    inline void bind(u32 key, Keymap *map) {bind207,3369
+    inline void bind(u32 key, Keymap *map) {Keymap::bind207,3369
+enum Edit {Edit215,3556
+    Insertion = 1,Insertion216,3569
+    Deletion,Deletion217,3589
+struct EditRecord {EditRecord220,3610
+    Edit kind;kind221,3631
+    Edit kind;EditRecord::kind221,3631
+    s64 pos;pos222,3647
+    s64 pos;EditRecord::pos222,3647
+    StringBuilder text;text223,3661
+    StringBuilder text;EditRecord::text223,3661
+
+c:/Dev/Codex/src\draw.cpp,916
+internal void free_render_target(RenderTarget *target) {free_render_target11,483
+internal RenderBatch *new_render_batch(RenderTarget *target) {new_render_batch23,833
+internal void set_texture(RenderTarget *target, u32 texture) {set_texture36,1234
+internal void set_clip_box(RenderTarget *target, Rect rect) {set_clip_box44,1476
+internal void push_batch_vertices(RenderTarget *target, Vertex *vertices, s32 count) {push_batch_vertices48,1588
+internal void draw_rectangle(RenderTarget *target, Rect rect, Color color) {draw_rectangle59,1905
+internal void draw_glyph(RenderTarget *target, FontAtlas *atlas, Vector2 p, u8 codepoint, Color color) {draw_glyph74,2563
+internal void draw_text(RenderTarget *target, string text, FontAtlas *atlas, Vector2 offset, Vector2 position, Color color) {draw_text87,3602
+internal void draw_view(RenderTarget *target, View *view, FontAtlas *atlas) {draw_view118,4550
+
+c:/Dev/Codex/src\os.cpp,0
+
+c:/Dev/Codex/src\render.cpp,179
+global GLuint main_shader;main_shader1,0
+internal GLuint shader_load(const char *file_name) {shader_load3,30
+internal void gl_render(RenderTarget *target) {gl_render71,1976
+
+c:/Dev/Codex/src\win32_codex.cpp,1269
+#define internal internal15,251
+#define local_persist local_persist16,276
+#define global global17,306
+typedef uint8_t  u8;u818,329
+typedef uint16_t u16;u1619,351
+typedef uint32_t u32;u3220,374
+typedef uint64_t u64;u6421,397
+typedef int8_t   s8;s822,420
+typedef int16_t  s16;s1623,442
+typedef int32_t  s32;s3224,465
+typedef int64_t  s64;s6425,488
+typedef s32 b32;b3226,511
+typedef float f32;f3227,529
+typedef double f64;f6428,549
+#define WIDTH WIDTH30,572
+#define HEIGHT HEIGHT31,592
+#define FONT_NAME FONT_NAME33,614
+#define FONT_HEIGHT FONT_HEIGHT34,652
+template <typename V, typename L, typename H> V clamp(const V &value, const L &min, const H &max) {clamp36,678
+internal void block_zero(void *mem, size_t size) {block_zero42,877
+internal inline float win32_get_seconds_elapsed(LARGE_INTEGER start, LARGE_INTEGER end) {win32_get_seconds_elapsed53,1073
+internal inline LARGE_INTEGER win32_get_wall_clock() {win32_get_wall_clock58,1289
+internal void init_opengl_extensions() {init_opengl_extensions64,1436
+internal HGLRC init_opengl(HDC real_dc) {init_opengl125,3929
+LRESULT CALLBACK win32_proc(HWND hwnd, UINT message, WPARAM wparam, LPARAM lparam) {win32_proc174,5642
+int main(int argc, char **argv) {main237,7898
+
+c:/Dev/Codex/src\win32_gl.h,1433
+#define WIN32_GL_HWIN32_GL_H2,20
+typedef HGLRC WINAPI wglCreateContextAttribsARB_type(HDC hdc, HGLRC hShareContext,wglCreateContextAttribsARB_type3,40
+wglCreateContextAttribsARB_type *wglCreateContextAttribsARB;wglCreateContextAttribsARB5,202
+#define WGL_CONTEXT_MAJOR_VERSION_ARB WGL_CONTEXT_MAJOR_VERSION_ARB8,371
+#define WGL_CONTEXT_MINOR_VERSION_ARB WGL_CONTEXT_MINOR_VERSION_ARB9,429
+#define WGL_CONTEXT_PROFILE_MASK_ARB WGL_CONTEXT_PROFILE_MASK_ARB10,487
+#define WGL_CONTEXT_CORE_PROFILE_BIT_ARB WGL_CONTEXT_CORE_PROFILE_BIT_ARB12,547
+typedef BOOL WINAPI wglChoosePixelFormatARB_type(HDC hdc, const int *piAttribIList, const FLOAT *pfAttribFList, UINT nMaxFormats, int *piFormats, UINT *nNumFormats);wglChoosePixelFormatARB_type14,611
+wglChoosePixelFormatARB_type *wglChoosePixelFormatARB;wglChoosePixelFormatARB15,778
+#define WGL_DRAW_TO_WINDOW_ARB WGL_DRAW_TO_WINDOW_ARB18,939
+#define WGL_ACCELERATION_ARB WGL_ACCELERATION_ARB19,997
+#define WGL_SUPPORT_OPENGL_ARB WGL_SUPPORT_OPENGL_ARB20,1055
+#define WGL_DOUBLE_BUFFER_ARB WGL_DOUBLE_BUFFER_ARB21,1113
+#define WGL_PIXEL_TYPE_ARB WGL_PIXEL_TYPE_ARB22,1171
+#define WGL_COLOR_BITS_ARB WGL_COLOR_BITS_ARB23,1229
+#define WGL_DEPTH_BITS_ARB WGL_DEPTH_BITS_ARB24,1287
+#define WGL_STENCIL_BITS_ARB WGL_STENCIL_BITS_ARB25,1345
+#define WGL_FULL_ACCELERATION_ARB WGL_FULL_ACCELERATION_ARB27,1405
+#define WGL_TYPE_RGBA_ARB WGL_TYPE_RGBA_ARB28,1463
+
+c:/Dev/Codex/src\xpath.cpp,1586
+#define WIN32_LEAN_AND_MEANWIN32_LEAN_AND_MEAN2,15
+bool xp_path_relative(xp_path path) {xp_path_relative24,378
+bool xp_path_relative(xp_path path) {xp_path_relative34,611
+void xp_append(xp_path *path, char *str) {xp_append45,821
+void xp_path_free(xp_path *path) {xp_path_free65,1361
+void xp_directory_free(xp_directory *directory) {xp_directory_free71,1487
+xp_path xp_path_new(char *file_name) {xp_path_new81,1762
+xp_path xp_path_copy(xp_path path) {xp_path_copy90,2000
+xp_path xp_get_home_path() {xp_get_home_path99,2251
+xp_path xp_get_home_path() {xp_get_home_path107,2486
+void xp_file_push(xp_directory *directory, xp_file file) {xp_file_push117,2736
+void xp_replace_slashes(xp_path path) {xp_replace_slashes123,2989
+xp_path xp_parent_path(xp_path path) {xp_parent_path130,3154
+xp_path xp_current_path() {xp_current_path151,3697
+xp_path xp_current_path() {xp_current_path162,4051
+xp_path xp_substr(xp_path path, int start, int count) {xp_substr169,4185
+void xp_normalize(xp_path *path) {xp_normalize179,4548
+xp_path xp_fullpath(xp_path path) {xp_fullpath197,5155
+xp_path xp_fullpath(xp_path path) {xp_fullpath208,5589
+bool xp_path_is_dir(xp_path path) {xp_path_is_dir223,5928
+bool xp_directory_new(xp_path path, xp_directory *directory) {xp_directory_new230,6074
+bool xp_directory_new(xp_path path, xp_directory *directory) {xp_directory_new286,7999
+void xp_path_append(xp_path *path, char *str) {xp_path_append327,9161
+xp_time xp_utc_time(uint64_t time) {xp_utc_time339,9504
+xp_time xp_utc_time(uint64_t time) {xp_utc_time364,10411
+
+c:/Dev/Codex/src\xpath.h,1599
+#define XPATH_HXPATH_H2,17
+#define XP_NORMAL XP_NORMAL6,59
+#define XP_DIRECTORY XP_DIRECTORY7,91
+#define XP_HIDDEN XP_HIDDEN8,123
+#define XP_READONLY XP_READONLY9,155
+#define XP_SYSTEM XP_SYSTEM10,187
+#define XP_EXECUTABLE XP_EXECUTABLE11,220
+    unsigned char *data;data14,273
+    unsigned char *data;__anon3::data14,273
+    int count;count15,299
+    int count;__anon3::count15,299
+} xp_path;xp_path16,315
+    uint32_t year;year19,347
+    uint32_t year;__anon4::year19,347
+    uint32_t month;month20,367
+    uint32_t month;__anon4::month20,367
+    uint32_t day;day21,388
+    uint32_t day;__anon4::day21,388
+    uint32_t hour;hour22,407
+    uint32_t hour;__anon4::hour22,407
+    uint32_t minute;minute23,427
+    uint32_t minute;__anon4::minute23,427
+    uint32_t second;second24,449
+    uint32_t second;__anon4::second24,449
+    uint32_t milliseconds;milliseconds25,471
+    uint32_t milliseconds;__anon4::milliseconds25,471
+} xp_time;xp_time26,499
+    char *name;name29,531
+    char *name;__anon5::name29,531
+    uint64_t bytes;bytes30,548
+    uint64_t bytes;__anon5::bytes30,548
+    uint32_t attributes;attributes31,569
+    uint32_t attributes;__anon5::attributes31,569
+    uint64_t time;time32,595
+    uint64_t time;__anon5::time32,595
+} xp_file;xp_file33,615
+    xp_path path;path36,647
+    xp_path path;__anon6::path36,647
+    xp_file *files;files37,666
+    xp_file *files;__anon6::files37,666
+    int file_count;file_count38,687
+    int file_count;__anon6::file_count38,687
+} xp_directory;xp_directory40,730
